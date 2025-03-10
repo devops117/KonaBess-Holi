@@ -210,6 +210,12 @@ public class KonaBessCore {
                 dtb.type = checkSingleBin(context, i) ? ChipInfo.type.msmnile_singleBin :
                         ChipInfo.type.msmnile;
                 dtbs.add(dtb);
+            } else if (checkChip(context, i, "SM6150")) {
+                dtb dtb = new dtb();
+                dtb.id = i;
+                dtb.type = checkSingleBin(context, i) ? ChipInfo.type.sm6150 :
+                        ChipInfo.type.sm6150;
+                dtbs.add(dtb);
             } else if (checkChip(context, i, "Lahaina V2.1")) {
                 dtb dtb = new dtb();
                 dtb.id = i;

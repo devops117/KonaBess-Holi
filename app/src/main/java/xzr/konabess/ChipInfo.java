@@ -25,6 +25,7 @@ public class ChipInfo {
         cliffs_7_singleBin,
         kalama_sg_singleBin,
         sun,
+	sm6150,
         unknown
     }
 
@@ -33,7 +34,8 @@ public class ChipInfo {
                 || type == ChipInfo.type.kalama || type == ChipInfo.type.diwali
                 || type == ChipInfo.type.ukee_singleBin || type == ChipInfo.type.pineapple
                 || type == ChipInfo.type.cliffs_singleBin || type == ChipInfo.type.cliffs_7_singleBin
-                || type == ChipInfo.type.kalama_sg_singleBin || type == ChipInfo.type.sun)
+                || type == ChipInfo.type.kalama_sg_singleBin || type == ChipInfo.type.sun
+		|| type == ChipInfo.type.sm6150)
             return 16;
         return 11;
     }
@@ -45,7 +47,8 @@ public class ChipInfo {
                 || type == ChipInfo.type.kalama || type == ChipInfo.type.diwali
                 || type == ChipInfo.type.ukee_singleBin || type == ChipInfo.type.pineapple
                 || type == ChipInfo.type.cliffs_singleBin || type == ChipInfo.type.cliffs_7_singleBin
-                || type == ChipInfo.type.kalama_sg_singleBin || type == ChipInfo.type.sun;
+                || type == ChipInfo.type.kalama_sg_singleBin || type == ChipInfo.type.sun
+		|| type == ChipInfo.type.sm6150;
     }
 
     public static boolean checkChipGeneral(type input) {
@@ -106,6 +109,8 @@ public class ChipInfo {
                 return activity.getResources().getString(R.string.sdg3xg2);
             case sun:
                 return activity.getResources().getString(R.string.sd8e);
+	    case sm6150:
+		return activity.getResources().getString(R.string.sd675);
         }
         return activity.getResources().getString(R.string.unknown);
     }
@@ -149,6 +154,8 @@ public class ChipInfo {
                 return rpmh_levels_kalama.levels;
             else if (ChipInfo.which == type.sun)
                 return rpmh_levels_sun.levels;
+	    else if (ChipInfo.which == type.sm6150)
+		return rpmh_levels_sm6150.levels;
 
             return new int[]{};
         }
@@ -189,12 +196,38 @@ public class ChipInfo {
                 return rpmh_levels_kalama.level_str;
             else if (ChipInfo.which == type.sun)
                 return rpmh_levels_sun.level_str;
+	    else if (ChipInfo.which == type.sm6150)
+		return rpmh_levels_sm6150.level_str;
 
             return new String[]{};
         }
     }
 
     private static class rpmh_levels_kona {
+        public static final int[] levels = {16, 48, 56, 64, 80, 96, 128, 144, 192, 224, 256, 320,
+                336, 352, 384, 400, 416};
+        public static final String[] level_str = {
+                "RETENTION",
+                "MIN_SVS",
+                "LOW_SVS_D1",
+                "LOW_SVS",
+                "LOW_SVS_L1",
+                "LOW_SVS_L2",
+                "SVS",
+                "SVS_L0",
+                "SVS_L1",
+                "SVS_L2",
+                "NOM",
+                "NOM_L1",
+                "NOM_L2",
+                "NOM_L3",
+                "TURBO",
+                "TURBO_L0",
+                "TURBO_L1"
+        };
+    }
+
+    private static class rpmh_levels_sm6150 {
         public static final int[] levels = {16, 48, 56, 64, 80, 96, 128, 144, 192, 224, 256, 320,
                 336, 352, 384, 400, 416};
         public static final String[] level_str = {
